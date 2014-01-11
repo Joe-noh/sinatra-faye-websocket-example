@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Reverse!</title>
+  </head>
+  <body>
+     <input type="text" id="input" />
+     <ul id="messages"></ul>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var append_li = function (str) {
+        $('#messages').append($('<li>').text(str));
+      }
+
+      var ws_uri = location.href.replace(/^http/, 'ws');
+      var ws = new WebSocket(ws_uri);
+
+      ws.onopen = function () {
+        append_li('ws.onopen');
+      }
+      ws.onmessage = function (msg) {
+        append_li('ws.onmessage: "' + msg.data + '" from server');
+      }
+      ws.onclose = function () {
+        append_li('ws.onclose');
+      }
+
+      var input = $('#input')
+      input.change(function () {
+        var msg = input.val();
+        ws.send(msg);
+        append_li('"' + msg + '" to server');
+        input.val("");
+      });
+    </script>
+  </body>
+</html>
