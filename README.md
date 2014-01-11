@@ -12,6 +12,6 @@ $ bundle exec ruby app.rb
 
 ## Thanks
 
-* ![sinatra](http://www.sinatrarb.com/)
+* ![sinatra](https://github.com/sinatra/sinatra)
 * ![faye-websocket-ruby](https://github.com/faye/faye-websocket-ruby)
 
