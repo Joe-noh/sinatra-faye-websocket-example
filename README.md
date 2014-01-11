@@ -10,8 +10,8 @@ $ bundle install
 $ bundle exec ruby app.rb
 ```
 
-## Lisence
+## Thanks
 
-Free.
-The user shall be responsible for any losses that may occur through the use of this.
+* ![sinatra](http://www.sinatrarb.com/)
+* ![faye-websocket-ruby](https://github.com/faye/faye-websocket-ruby)
 
