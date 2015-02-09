@@ -3,7 +3,7 @@
     <title>Reverse!</title>
   </head>
   <body>
-     <input type="text" id="input" />
+    <button id="send-button">send [1, 2, 3]</button>
      <ul id="messages"></ul>
 
     <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -25,12 +25,11 @@
         append_li('ws.onclose');
       }
 
-      var input = $('#input')
-      input.change(function () {
-        var msg = input.val();
-        ws.send(msg);
+      var button = $('#send-button');
+      button.click(function () {
+        var msg = [1, 2, 3];
+        ws.send(JSON.stringify(msg));
         append_li('"' + msg + '" to server');
-        input.val("");
       });
     </script>
   </body>

@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+require 'json'
+
 Faye::WebSocket.load_adapter('thin')
 
 get '/' do
@@ -12,7 +14,9 @@ get '/' do
     end
 
     ws.on(:message) do |msg|
-      ws.send(msg.data.reverse)  # Reverse and reply
+      parsed = JSON.parse(msg.data)
+      p parsed
+      ws.send(JSON.unparse parsed.reverse)
     end
 
     ws.on(:close) do |event|
